@@ -400,6 +400,8 @@ class Inventory_model extends CI_Model
             $sql = "UPDATE transaksi SET qty = qty + $qty WHERE id_transaksi = '$id'";
         }
         $this->db->query($sql);
+        $sql2  = "UPDATE transaksi SET sub_total = qty * sub_total WHERE id_transaksi = '$id'";
+        $this->db->query($sql2);
     }
 
     public function riwayatTransaksi()

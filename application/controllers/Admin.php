@@ -317,13 +317,6 @@ class Admin extends CI_Controller
     public function getAllCart()
     {
         $data = $this->inventory_model->getCart();
-        $harga = 0;
-
-        for ($i = 0; $i < count($data); $i++) {
-            $harga = (int)$data[$i]['harga_jual'] * (int)$data[$i]['qty'];
-            $data[$i]['harga'] = $harga;
-        }
-
         print json_encode($data);
     }
 
