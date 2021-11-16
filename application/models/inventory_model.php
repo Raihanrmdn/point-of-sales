@@ -359,6 +359,9 @@ class Inventory_model extends CI_Model
     }
 
 
+
+    // FADIL CODE
+
     public function getData($tabel, $whereClause)
     {
         return $this->db->get_where($tabel, $whereClause)->row_array();
@@ -397,5 +400,10 @@ class Inventory_model extends CI_Model
             $sql = "UPDATE transaksi SET qty = qty + $qty WHERE id_transaksi = '$id'";
         }
         $this->db->query($sql);
+    }
+
+    public function riwayatTransaksi()
+    {
+        return $this->db->get('transaksi')->result_array();
     }
 }

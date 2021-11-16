@@ -164,7 +164,6 @@ class Admin extends CI_Controller
         } else {
             $id = $this->input->post('id_barang');
             $this->inventory_model->update_barangMasuk($this->input->post('id_barang'), (int)$this->input->post('qty'));
-            // $this->inventory_model->update_barang('barang', 'stok', (int)$this->input->post('qty'), 'id_barang', $id);
             $this->inventory_model->add_barangMasuk();
         }
     }
@@ -266,6 +265,20 @@ class Admin extends CI_Controller
         redirect('admin/barangKeluarAll');
     }
 
+    public function riwayatTransaksi()
+    {
+        $data['title'] = 'Riwayat Transaksi';
+        $data['admin'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['riwayatTransaksi'] = $this->inventory_model->riwayatTransaksi();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/riwayatTransaksi', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function transaksi()
     {
         $data['title'] = 'Transaksi';
@@ -284,7 +297,7 @@ class Admin extends CI_Controller
     public function tambahCart()
     {
         $id_barang = $this->input->post('id_barang');
-        // $isi = $this->inventory_model->getData('barang', ['id_barang' => $id]);
+        $isi = $this->inventory_model->getData('barang', ['id_barang' => $id_barang]);
         $id_transaksi = $this->inventory_model->id_transaksi();
         $invoice = $this->inventory_model->invoice();
 
@@ -292,7 +305,8 @@ class Admin extends CI_Controller
             'id_transaksi' => $id_transaksi,
             'id_barang' => $id_barang,
             'invoice' => $invoice,
-            'qty' => 1
+            'qty' => 1,
+            'sub_total' => $isi['harga_jual']
         ];
 
         $this->inventory_model->add('transaksi', $val);

@@ -42,7 +42,7 @@
                             <tr>
                                 <th scope="col"> <?= $i; ?></th>
                                 <td class="text-center">
-                                    <img src="<?= site_url('admin/barcode/') . $b['id_barang']; ?>" width="75%">
+                                    <img src="<?= site_url('admin/barcode/') . $b['id_barang']; ?>" width="100%">
                                 </td>
                                 <td><?= $b['id_barang']; ?></td>
                                 <td><?= $b['merek']; ?></td>

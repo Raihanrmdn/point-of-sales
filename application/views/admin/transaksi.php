@@ -54,10 +54,9 @@
                         </div>
 
                         <div class="row">
-                            <label class="col-sm-4"></label>
-                            <div class="col-sm-8">
-                                <button type=" button" id="keranjang" class="btn btn-primary col-sm-12 float-right">
-                                    <i class="fa fa-fw fa-cart-plus"></i> Tambah
+                            <div class="col-sm-12">
+                                <button type=" button" id="keranjang" class="btn btn-primary col-sm-12 float-right" disabled>
+                                    <i class="fa fa-fw fa-cart-plus"></i> Barang
                                 </button>
                             </div>
                         </div>
@@ -206,6 +205,7 @@
     </div>
 </div>
 
+<!-- Proses Bayar -->
 <div class="modal fade" id="payment">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -222,7 +222,8 @@
         </div>
     </div>
 </div>
-
+<!-- END Proses Bayar -->
+<!-- Select Barang -->
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <script>
@@ -246,6 +247,7 @@
         })
     })
 </script>
+<!-- END Select Barang -->
 <script>
     function tambahCart(id) {
         $.ajax({
@@ -295,7 +297,7 @@
         }
         $('#barang').html(tabel);
         $('#subTotal').val(sub_total);
-        $('#grandTotal').val(sub_total);
+        $('#grandTotal').html(sub_total);
     }
 
     function getQty(id) {
@@ -333,10 +335,6 @@
         })
     }
 
-    // $(document).ready(function() {
-    //     var total = $('.subtotal').html();
-    //     console.log(total);
-    // });
 
     $('#bayar').keyup(function() {
         var subTotal = $('#subTotal').val();

@@ -38,6 +38,13 @@
             <span>Transaksi</span></a>
     </li>
 
+    <!-- Nav Item - Riwayat Transaksi -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/riwayatTransaksi'); ?>">
+            <i class="fas fa-fw fa-shopping-cart"></i>
+            <span>Riwayat Transaksi</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
